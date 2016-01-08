@@ -36,6 +36,38 @@ public class CalculatorActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            /**
+             *TODO: make all these settings actually do something useful.
+             */
+            case R.id.action_settings:
+                Toast.makeText(getApplicationContext(),R.string.action_settings, Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.science_calc_setting:
+                Toast.makeText(getApplicationContext(),R.string.science_calculator, Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.normal_calc_setting:
+                Toast.makeText(getApplicationContext(),R.string.normal_calculator, Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.unit_calculator:
+                Toast.makeText(getApplicationContext(),R.string.unit_calculator, Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.exit_button:
+                this.finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
 
     public void clickButton(View view) {
         switch (view.getId()) {
@@ -69,20 +101,20 @@ public class CalculatorActivity extends AppCompatActivity {
 
         switch (s) {
             case "*":
-                textView.setText(textView.getText() + s);
+                textView.append(s);
                 break;
             case "/":
-                textView.setText(textView.getText() + s);
+                textView.append(s);
                 break;
             case "-":
-                textView.setText(textView.getText() + s);
+                textView.append(s);
                 break;
             case "+":
-                textView.setText(textView.getText() + s);
+                textView.append(s);
                 break;
             default:
                 if (!textView.getText().toString().equals("0")) {
-                    textView.setText(textView.getText() + s);
+                    textView.append(s);
                 } else {
                     textView.setText(s);
                 }
@@ -96,7 +128,7 @@ public class CalculatorActivity extends AppCompatActivity {
 
         try {
             double result = engine.evaluate(((TextView) findViewById(R.id.textView)).getText().toString());
-            textView.setText(result + "");
+            textView.setText(String.valueOf(result));
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), R.string.invalid_operation, Toast.LENGTH_LONG).show();
         }
@@ -106,7 +138,4 @@ public class CalculatorActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.textView)).setText("0");
     }
 
-    public void exit(MenuItem item) {
-        this.finish();
-    }
 }

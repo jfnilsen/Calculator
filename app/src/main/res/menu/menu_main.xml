@@ -3,15 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.jim.myapplication.CalculatorActivity">
     <item
-        android:id="@+id/action_favorite"
+        android:id="@+id/exit_button"
         android:icon="@drawable/ic_arrow_back_black_24dp"
         android:title="@string/action_favorite"
-        android:onClick="exit"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/science_calc_setting"
+        android:orderInCategory="10"
+        android:title="@string/science_calculator"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/normal_calc_setting"
+        android:orderInCategory="9"
+        android:title="@string/normal_calculator"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/unit_calculator"
+        android:orderInCategory="8"
+        android:title="@string/unit_calculator"
         app:showAsAction="never" />
 </menu>

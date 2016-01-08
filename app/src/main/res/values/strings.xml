@@ -3,4 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="action_favorite">Test</string>
     <string name="invalid_operation">Invalid operation</string>
+    <string name="science_calculator">Science calculator</string>
+    <string name="normal_calculator">Normal calculator</string>
+    <string name="unit_calculator">Unit conversion</string>
 </resources>
