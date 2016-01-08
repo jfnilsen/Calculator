@@ -6,9 +6,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.matheclipse.parser.client.eval.DoubleEvaluator;
+
 
 public class CalculatorActivity extends AppCompatActivity {
-    ExpressionProcessor processor = new ExpressionProcessor();
+    DoubleEvaluator engine = new DoubleEvaluator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,8 +108,7 @@ public class CalculatorActivity extends AppCompatActivity {
                     textView.setText(textView.getText() + s);
                 break;
             case "-":
-                if(!endsWithOperator)
-                    textView.setText(textView.getText() + s);
+                textView.setText(textView.getText() + s);
                 break;
             case "+":
                 if(!endsWithOperator)
@@ -125,8 +126,9 @@ public class CalculatorActivity extends AppCompatActivity {
     }
     private void summarize() {
         TextView textView = ((TextView)findViewById(R.id.textView));
+
         try{
-            double result = processor.evaluateExpression(((TextView)findViewById(R.id.textView)).getText().toString());
+            double result = engine.evaluate(((TextView)findViewById(R.id.textView)).getText().toString());
             textView.setText(result + "");
         }catch(Exception e) {
             Toast.makeText(getApplicationContext(),"Invalid operation", Toast.LENGTH_LONG).show();
