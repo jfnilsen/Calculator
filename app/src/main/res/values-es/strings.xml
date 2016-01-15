@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>    <string name="app_name">Calculadora</string>
+<resources>
+    <string name="app_name">Calculadora</string>
     <string name="action_settings">Ajustes</string>
     <string name="action_favorite">Test</string>
     <string name="invalid_operation">Operación inválida</string>
     <string name="science_calculator">Ciencia calculadora</string>
     <string name="normal_calculator">Calculadora normal</string>
-    <string name="unit_calculator">Conversión de unidades</string></resources>
+    <string name="unit_calculator">Conversión de unidades</string>
+</resources>
