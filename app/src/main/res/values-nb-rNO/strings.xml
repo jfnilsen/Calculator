@@ -7,5 +7,7 @@
     <string name="science_calculator">Vitenskapelig kalkulator</string>
     <string name="normal_calculator">Normal kalkulator</string>
     <string name="unit_calculator">Enhetsomregning</string>
+    <string name="about">Om</string>
+    <string name="about_message">Forfatter: Jim Frode Nilsen\nVersjon 0.1</string>
 
 </resources>

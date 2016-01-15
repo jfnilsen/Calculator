@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.jim.myapplication.CalculatorActivity">
     <item
+        android:id="@+id/about"
+        android:orderInCategory="1"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="@string/about"
+        app:showAsAction="ifRoom"
+        />
+    <item
         android:id="@+id/exit_button"
         android:icon="@drawable/ic_arrow_back_black_24dp"
         android:title="@string/action_favorite"

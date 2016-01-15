@@ -1,7 +1,10 @@
 package com.example.jim.calculator;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -62,6 +65,19 @@ public class CalculatorActivity extends AppCompatActivity {
                 this.finish();
                 return true;
 
+            case R.id.about:
+                AlertDialog alertDialog = new AlertDialog.Builder(CalculatorActivity.this).create();
+                alertDialog.setTitle(R.string.about);
+                alertDialog.setMessage(getString(R.string.about_message));
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 

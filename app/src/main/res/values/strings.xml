@@ -6,4 +6,7 @@
     <string name="science_calculator">Science calculator</string>
     <string name="normal_calculator">Normal calculator</string>
     <string name="unit_calculator">Unit conversion</string>
+    <string name="about">About</string>
+    <string name="about_message">Author: Jim Frode Nilsen\nVersion: 0.1</string>
+    <string name="ok" translatable="false">Ok</string>
 </resources>

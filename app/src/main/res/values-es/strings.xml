@@ -7,4 +7,6 @@
     <string name="science_calculator">Ciencia calculadora</string>
     <string name="normal_calculator">Calculadora normal</string>
     <string name="unit_calculator">Conversión de unidades</string>
+    <string name="about">Acerca</string>
+    <string name="about_message">Autor: Jim Frode Nilsen\nVersión 0.1</string>
 </resources>
