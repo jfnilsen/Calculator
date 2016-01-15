@@ -2,11 +2,12 @@
 <resources>
     <string name="app_name">Calculadora</string>
     <string name="action_settings">Ajustes</string>
-    <string name="action_favorite">Test</string>
     <string name="invalid_operation">Operación inválida</string>
     <string name="science_calculator">Ciencia calculadora</string>
     <string name="normal_calculator">Calculadora normal</string>
     <string name="unit_calculator">Conversión de unidades</string>
     <string name="about">Acerca</string>
     <string name="about_message">Autor: Jim Frode Nilsen\nVersión 0.1</string>
+    <string name="action_exit"> Salida</string>
+    <string name="result_text">Resultado</string>
 </resources>

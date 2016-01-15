@@ -16,6 +16,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -60,15 +61,71 @@
 
         <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             tools:context="com.example.jim.calculator.CalculatorActivity">
+
+            <Button
+                android:id="@+id/buttonSin"
+                style="@style/ButtonThemeSmall"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:text="Sin"
+                android:onClick="clickButton"
+                />
+            <Button
+                android:id="@+id/buttonCos"
+                style="@style/ButtonThemeSmall"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:text="Cos"
+                android:onClick="clickButton"
+                />
+            <Button
+                android:id="@+id/buttonTan"
+                style="@style/ButtonThemeSmall"
+                android:layout_row="1"
+                android:layout_column="2"
+                android:text="Tan"
+                android:onClick="clickButton"
+                />
+            <Button
+                android:id="@+id/buttonLog"
+                style="@style/ButtonThemeSmall"
+                android:layout_row="1"
+                android:layout_column="3"
+                android:text="Log"
+                android:onClick="clickButton"
+                />
+            <Button
+                android:id="@+id/buttonX2"
+                style="@style/ButtonThemeSmall"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:text="X²"
+                android:onClick="clickButton"
+                />
+            <Button
+                android:id="@+id/buttonYx"
+                style="@style/ButtonThemeSmall"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:text="^"
+                android:onClick="clickButton"
+                />
+            <Button
+                android:id="@+id/button_close_SqBracket"
+                style="@style/ButtonThemeSmall"
+                android:layout_row="0"
+                android:layout_column="3"
+                android:text="]"
+                android:onClick="clickButton"/>
+
 
 
             <Button
                 android:id="@+id/button7"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="0"
                 android:layout_row="3"
                 android:onClick="clickButton"
@@ -76,7 +133,7 @@
 
             <Button
                 android:id="@+id/button8"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="1"
                 android:layout_row="3"
                 android:onClick="clickButton"
@@ -84,7 +141,7 @@
 
             <Button
                 android:id="@+id/button9"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="2"
                 android:layout_row="3"
                 android:onClick="clickButton"
@@ -92,7 +149,7 @@
 
             <Button
                 android:id="@+id/buttonEquals"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="2"
                 android:layout_row="6"
                 android:onClick="clickButton"
@@ -100,7 +157,7 @@
 
             <Button
                 android:id="@+id/buttonPlus"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="3"
                 android:layout_row="6"
                 android:onClick="clickButton"
@@ -108,7 +165,7 @@
 
             <Button
                 android:id="@+id/buttonMinus"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="3"
                 android:layout_row="5"
                 android:onClick="clickButton"
@@ -116,7 +173,7 @@
 
             <Button
                 android:id="@+id/buttonMultiply"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="3"
                 android:layout_row="4"
                 android:onClick="clickButton"
@@ -124,7 +181,7 @@
 
             <Button
                 android:id="@+id/buttonDivide"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="3"
                 android:layout_row="3"
                 android:onClick="clickButton"
@@ -133,7 +190,7 @@
 
             <Button
                 android:id="@+id/buttonBack"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="2"
                 android:layout_row="2"
                 android:drawableRight="@drawable/ic_arrow_back_black_24dp"
@@ -143,7 +200,7 @@
 
             <Button
                 android:id="@+id/buttonReset"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="3"
                 android:layout_row="2"
                 android:onClick="clickButton"
@@ -152,7 +209,7 @@
 
             <Button
                 android:id="@+id/button5"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="1"
                 android:layout_row="4"
                 android:onClick="clickButton"
@@ -160,7 +217,7 @@
 
             <Button
                 android:id="@+id/button4"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="0"
                 android:layout_row="4"
                 android:onClick="clickButton"
@@ -168,7 +225,7 @@
 
             <Button
                 android:id="@+id/button6"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="2"
                 android:layout_row="4"
                 android:onClick="clickButton"
@@ -176,7 +233,7 @@
 
             <Button
                 android:id="@+id/button1"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="0"
                 android:layout_row="5"
                 android:onClick="clickButton"
@@ -184,7 +241,7 @@
 
             <Button
                 android:id="@+id/button2"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="1"
                 android:layout_row="5"
                 android:onClick="clickButton"
@@ -192,7 +249,7 @@
 
             <Button
                 android:id="@+id/button3"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="2"
                 android:layout_row="5"
                 android:onClick="clickButton"
@@ -200,7 +257,7 @@
 
             <Button
                 android:id="@+id/buttonPeriod"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="0"
                 android:layout_row="6"
                 android:onClick="clickButton"
@@ -208,7 +265,7 @@
 
             <Button
                 android:id="@+id/button0"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="1"
                 android:layout_row="6"
                 android:onClick="clickButton"
@@ -216,7 +273,7 @@
 
             <Button
                 android:id="@+id/buttonOpeningParenthesis"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="0"
                 android:layout_row="2"
                 android:onClick="clickButton"
@@ -224,7 +281,7 @@
 
             <Button
                 android:id="@+id/buttonClosingParenthesis"
-                style="@style/ButtonTheme"
+                style="@style/ButtonThemeSmall"
                 android:layout_column="1"
                 android:layout_row="2"
                 android:onClick="clickButton"

@@ -12,7 +12,7 @@
     <item
         android:id="@+id/exit_button"
         android:icon="@drawable/ic_arrow_back_black_24dp"
-        android:title="@string/action_favorite"
+        android:title="@string/action_exit"
         app:showAsAction="ifRoom" />
 
     <item

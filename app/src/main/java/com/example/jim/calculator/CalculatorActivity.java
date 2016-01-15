@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 
 import org.matheclipse.parser.client.eval.DoubleEvaluator;
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Field;
 
@@ -47,14 +49,19 @@ public class CalculatorActivity extends AppCompatActivity {
              */
             case R.id.action_settings:
                 Toast.makeText(getApplicationContext(),R.string.action_settings, Toast.LENGTH_LONG).show();
+
                 return true;
 
             case R.id.science_calc_setting:
                 Toast.makeText(getApplicationContext(),R.string.science_calculator, Toast.LENGTH_LONG).show();
+                setContentView(R.layout.activity_scientific_calculator);
+                setSupportActionBar((Toolbar)findViewById(R.id.my_toolbar));
                 return true;
 
             case R.id.normal_calc_setting:
                 Toast.makeText(getApplicationContext(),R.string.normal_calculator, Toast.LENGTH_LONG).show();
+                setContentView(R.layout.activity_calculator);
+                setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
                 return true;
 
             case R.id.unit_calculator:
@@ -95,6 +102,20 @@ public class CalculatorActivity extends AppCompatActivity {
                 break;
             case R.id.buttonBack:
                 removeLastDigit();
+                break;
+            case R.id.buttonSin:
+                addButtonValueToTextView("Sin[");
+                break;
+            case R.id.buttonCos:
+                addButtonValueToTextView("Cos[");
+                break;
+            case R.id.buttonTan:
+                addButtonValueToTextView("Tan[");
+                break;
+            case R.id.buttonLog:
+                addButtonValueToTextView("Log[");
+            case R.id.buttonX2:
+                addButtonValueToTextView("^2");
                 break;
             default:
                 addButtonValueToTextView(((Button) findViewById(view.getId())).getText().toString());
@@ -140,7 +161,7 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private void summarize() {
-        TextView textView = ((TextView) findViewById(R.id.textView));
+        TextView textView = ((TextView) findViewById(R.id.result_textView));
 
         try {
             double result = engine.evaluate(((TextView) findViewById(R.id.textView)).getText().toString());
@@ -152,6 +173,7 @@ public class CalculatorActivity extends AppCompatActivity {
 
     private void clearTextView() {
         ((TextView) findViewById(R.id.textView)).setText("0");
+        ((TextView) findViewById(R.id.result_textView)).setText("0");
     }
 
 }
