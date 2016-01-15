@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kalkulator</string>
+    <string name="action_settings">Innstillinger</string>
+    <string name="action_favorite">Test</string>
+    <string name="invalid_operation">Feil regneoperasjon</string>
+    <string name="science_calculator">Vitenskapelig kalkulator</string>
+    <string name="normal_calculator">Normal kalkulator</string>
+    <string name="unit_calculator">Enhetsomregning</string>
+
+</resources>
