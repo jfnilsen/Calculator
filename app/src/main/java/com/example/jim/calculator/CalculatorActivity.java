@@ -3,6 +3,7 @@ package com.example.jim.calculator;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -11,28 +12,29 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import org.matheclipse.parser.client.eval.ComplexEvaluator;
 import org.matheclipse.parser.client.eval.DoubleEvaluator;
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Field;
 
 
 public class CalculatorActivity extends AppCompatActivity {
-    ComplexEvaluator engine = new ComplexEvaluator();
+    DoubleEvaluator engine = new DoubleEvaluator();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculator);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            setContentView(R.layout.activity_calculator);
+            Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            setSupportActionBar(myToolbar);
+        }else {
+            setContentView(R.layout.activity_scientific_calculator_landscape);
+            Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            setSupportActionBar(myToolbar);
+        }
 
     }
 
@@ -125,8 +127,11 @@ public class CalculatorActivity extends AppCompatActivity {
             case R.id.buttonExp:
                 addButtonValueToTextView("Exp[");
                 break;
-            case R.id.buttonFactorial:
-                addButtonValueToTextView("!");
+            case R.id.buttonTenExp:
+                addButtonValueToTextView("10^");
+                break;
+            case R.id.buttonPercentage:
+                addButtonValueToTextView("/100");
                 break;
             default:
                 addButtonValueToTextView(((Button) findViewById(view.getId())).getText().toString());
@@ -146,61 +151,27 @@ public class CalculatorActivity extends AppCompatActivity {
 
     private void addButtonValueToTextView(String s) {
         TextView textView = ((TextView) findViewById(R.id.textView));
-
-        switch (s) {
-            case "*":
-                textView.append(s);
-                break;
-            case "/":
-                textView.append(s);
-                break;
-            case "-":
-                textView.append(s);
-                break;
-            case "+":
-                textView.append(s);
-                break;
-            default:
-                if (!textView.getText().toString().equals("0")) {
-                    textView.append(s);
-                } else {
-                    textView.setText(s);
-                }
-                break;
+        if (!textView.getText().toString().equals("0") || s.equals(".")) {
+            textView.append(s);
+        } else {
+            textView.setText(s);
         }
 
-    }
-
-    private double factorial(String numberAsString){
-        int n = Integer.parseInt(numberAsString);
-        int fact = 1;
-        for (int i = 1; i <= n; i++) {
-            fact *= i;
-        }
-        return fact;
     }
 
 
     private void summarize() {
         TextView resultView = ((TextView) findViewById(R.id.result_textView));
         String expression = ((TextView) findViewById(R.id.textView)).getText().toString();
-        String[] expressionParts = expression.split("!");
 
-        if(expressionParts.length > 1){
-            for(int i = 0; i < (expressionParts.length - 1); i++){
-                String[] subParts = expressionParts[i].split("[+[/]-*]");
-                double result = factorial(subParts[subParts.length-1]);
-                System.out.println();
-            }
-        }
         try {
-            String result = ComplexEvaluator.toString(engine.evaluate(expression));
+            double result = engine.evaluate(expression);
             resultView.setText(String.valueOf(result));
         } catch (Exception e) {
-            Log.d("Errorlog" ,e.getMessage());
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), R.string.invalid_operation, Toast.LENGTH_LONG).show();
+            Log.d("ErrorLog", e.getMessage());
+            Toast.makeText(getApplicationContext(), R.string.invalid_operation, Toast.LENGTH_SHORT).show();
         }
+
     }
 
     private void clearTextView() {
