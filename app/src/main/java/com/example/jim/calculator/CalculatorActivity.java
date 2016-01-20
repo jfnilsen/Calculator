@@ -3,7 +3,6 @@ package com.example.jim.calculator;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -25,15 +24,10 @@ public class CalculatorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-            setContentView(R.layout.activity_calculator);
-            Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-            setSupportActionBar(myToolbar);
-        }else {
-            setContentView(R.layout.activity_scientific_calculator_landscape);
-            Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-            setSupportActionBar(myToolbar);
-        }
+
+        setContentView(R.layout.activity_calculator);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
 
     }
 
