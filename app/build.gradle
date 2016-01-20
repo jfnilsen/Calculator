@@ -25,4 +25,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile files('libs/symja-2012-04-08.jar')
     compile files('libs/symja-0.0.7a.jar')
+    compile files('libs/symja-2015-08-09.jar')
+    compile files('C:/Users/Jim/AndroidStudioProjects/Calculator/libs/symja-2016-01-09.jar')
+    compile files('C:/Users/Jim/AndroidStudioProjects/Calculator/libs/symja-lib-2015-08-09.jar')
+    compile files('C:/Users/Jim/AndroidStudioProjects/Calculator/libs/symja-0.0.7a.jar')
+    compile files('C:/Users/Jim/AndroidStudioProjects/Calculator/libs/symja-mini-2015-03-26.jar')
+    compile files('C:/Users/Jim/AndroidStudioProjects/Calculator/libs/matheclipse-parser-0.0.10.jar')
 }
