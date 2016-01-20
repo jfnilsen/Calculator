@@ -16,14 +16,10 @@
         <item name="android:bottomRightRadius">0dp</item>
         <item name="android:layout_width">90dp</item>
         <item name="android:layout_height">50dp</item>
+        <item name="android:onClick">clickButton</item>
     </style>
 
-    <style name="ButtonThemeSmall">
-        <item name="android:paddingBottom">0dp</item>
-        <item name="android:paddingTop">0dp</item>
-        <item name="android:background">@drawable/buttonshape</item>
-        <item name="android:bottomLeftRadius">100dp</item>
-        <item name="android:bottomRightRadius">0dp</item>
+    <style name="ButtonThemeSmall" parent="ButtonTheme">
         <item name="android:layout_width">90dp</item>
         <item name="android:layout_height">30dp</item>
     </style>
