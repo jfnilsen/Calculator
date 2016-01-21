@@ -26,9 +26,7 @@ public class CalculatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_calculator);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+
 
         if(savedInstanceState != null){
             calculatorOption = savedInstanceState.getInt(CALCULATOR_STATE);
@@ -43,6 +41,10 @@ public class CalculatorActivity extends AppCompatActivity {
                     break;
             }
             ((TextView)findViewById(R.id.textView)).setText(savedInstanceState.getCharSequence(EXPRESSION_STATE));
+        }else{
+            setContentView(R.layout.activity_calculator);
+            Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            setSupportActionBar(myToolbar);
         }
 
 
