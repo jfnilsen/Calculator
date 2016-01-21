@@ -40,28 +40,30 @@ public class CalculatorActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            /**
-             *TODO: make all these settings actually do something useful.
-             */
+
             case R.id.action_settings:
-                Toast.makeText(getApplicationContext(),R.string.action_settings, Toast.LENGTH_LONG).show();
+                AlertDialog.Builder settingsBuilder = new AlertDialog.Builder(this);
+                settingsBuilder.setTitle(R.string.action_settings);
 
-                return true;
+                CharSequence[] calculators = new CharSequence[] {getString(R.string.normal_calculator), getString(R.string.science_calculator)};
+                settingsBuilder.setItems(calculators,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which){
+                                    case 0:
+                                        setContentView(R.layout.activity_calculator);
+                                        setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
+                                        break;
+                                    case 1:
+                                        setContentView(R.layout.activity_scientific_calculator);
+                                        setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
+                                        break;
+                                }
+                                dialog.dismiss();
+                            }
+                        });
+                settingsBuilder.show();
 
-            case R.id.science_calc_setting:
-                Toast.makeText(getApplicationContext(),R.string.science_calculator, Toast.LENGTH_LONG).show();
-                setContentView(R.layout.activity_scientific_calculator);
-                setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
-                return true;
-
-            case R.id.normal_calc_setting:
-                Toast.makeText(getApplicationContext(),R.string.normal_calculator, Toast.LENGTH_LONG).show();
-                setContentView(R.layout.activity_calculator);
-                setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
-                return true;
-
-            case R.id.unit_calculator:
-                Toast.makeText(getApplicationContext(),R.string.unit_calculator, Toast.LENGTH_LONG).show();
                 return true;
 
             case R.id.exit_button:
