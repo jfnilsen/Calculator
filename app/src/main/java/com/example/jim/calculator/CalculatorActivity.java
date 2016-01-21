@@ -19,8 +19,9 @@ import org.matheclipse.parser.client.eval.DoubleEvaluator;
 
 public class CalculatorActivity extends AppCompatActivity {
     DoubleEvaluator engine = new DoubleEvaluator();
-
-
+    public static final String EXPRESSION_STATE = "Expression";
+    public static final String CALCULATOR_STATE = "Calculator";
+    private int calculatorOption = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +30,36 @@ public class CalculatorActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
+        if(savedInstanceState != null){
+            calculatorOption = savedInstanceState.getInt(CALCULATOR_STATE);
+            switch (calculatorOption){
+                case 0:
+                    setContentView(R.layout.activity_calculator);
+                    setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
+                    break;
+                case 1:
+                    setContentView(R.layout.activity_scientific_calculator);
+                    setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
+                    break;
+            }
+            ((TextView)findViewById(R.id.textView)).setText(savedInstanceState.getCharSequence(EXPRESSION_STATE));
+        }
+
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putCharSequence(EXPRESSION_STATE, ((TextView) findViewById(R.id.textView)).getText().toString());
+        outState.putInt(CALCULATOR_STATE, calculatorOption);
+
     }
 
     @Override
@@ -53,10 +78,12 @@ public class CalculatorActivity extends AppCompatActivity {
                                     case 0:
                                         setContentView(R.layout.activity_calculator);
                                         setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
+                                        calculatorOption = 0;
                                         break;
                                     case 1:
                                         setContentView(R.layout.activity_scientific_calculator);
                                         setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
+                                        calculatorOption = 1;
                                         break;
                                 }
                                 dialog.dismiss();
