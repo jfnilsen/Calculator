@@ -76,18 +76,19 @@ public class CalculatorActivity extends AppCompatActivity {
                 settingsBuilder.setItems(calculators,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                switch (which){
+                                calculatorOption = which;
+                                String tempText = ((TextView)findViewById(R.id.textView)).getText().toString();
+
+                                switch (calculatorOption){
                                     case 0:
                                         setContentView(R.layout.activity_calculator);
-                                        setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
-                                        calculatorOption = 0;
                                         break;
                                     case 1:
                                         setContentView(R.layout.activity_scientific_calculator);
-                                        setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
-                                        calculatorOption = 1;
                                         break;
                                 }
+                                setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
+                                ((TextView)findViewById(R.id.textView)).setText(tempText);
                                 dialog.dismiss();
                             }
                         });

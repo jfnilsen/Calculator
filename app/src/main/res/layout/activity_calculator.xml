@@ -64,7 +64,8 @@
         android:layout_gravity="bottom|center"
         android:orientation="horizontal"
         tools:context="com.example.jim.calculator.CalculatorActivity"
-        android:layout_weight="0">
+        android:layout_weight="0"
+        android:stretchColumns="*">
         <TableRow>
             <Button
                 android:id="@+id/buttonOpeningParenthesis"
@@ -79,8 +80,9 @@
             <Button
                 android:id="@+id/buttonBack"
                 style="@style/ButtonTheme"
-                android:drawableRight="@drawable/ic_arrow_back_black_24dp"
-                android:paddingRight="30dp" />
+                android:drawableTop="@drawable/ic_arrow_back_black_24dp"
+                android:drawablePadding="-25dp"
+                />
 
 
             <Button
