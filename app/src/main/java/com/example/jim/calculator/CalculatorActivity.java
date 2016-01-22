@@ -20,40 +20,18 @@ import org.matheclipse.parser.client.eval.DoubleEvaluator;
 public class CalculatorActivity extends AppCompatActivity {
     DoubleEvaluator engine = new DoubleEvaluator();
     public static final String EXPRESSION_STATE = "Expression";
+    public static final String RESULT_STATE = "Result";
     public static final String CALCULATOR_STATE = "Calculator";
     private int calculatorOption = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_calculator);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
 
-
-        if(savedInstanceState != null){
-            calculatorOption = savedInstanceState.getInt(CALCULATOR_STATE);
-            switch (calculatorOption){
-                case 0:
-                    setContentView(R.layout.activity_calculator);
-                    setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
-                    break;
-                case 1:
-                    setContentView(R.layout.activity_scientific_calculator);
-                    setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
-                    break;
-            }
-            ((TextView)findViewById(R.id.textView)).setText(savedInstanceState.getCharSequence(EXPRESSION_STATE));
-        }else{
-            setContentView(R.layout.activity_calculator);
-            Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-            setSupportActionBar(myToolbar);
-        }
-
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
     }
 
     @Override
@@ -61,7 +39,34 @@ public class CalculatorActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putCharSequence(EXPRESSION_STATE, ((TextView) findViewById(R.id.textView)).getText().toString());
         outState.putInt(CALCULATOR_STATE, calculatorOption);
+        outState.putCharSequence(RESULT_STATE, ((TextView) findViewById(R.id.result_textView)).getText().toString());
 
+    }
+
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        calculatorOption = savedInstanceState.getInt(CALCULATOR_STATE);
+        switch (calculatorOption) {
+            case 0:
+                setContentView(R.layout.activity_calculator);
+                setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
+                break;
+            case 1:
+                setContentView(R.layout.activity_scientific_calculator);
+                setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
+                break;
+        }
+        ((TextView) findViewById(R.id.textView)).setText(savedInstanceState.getCharSequence(EXPRESSION_STATE));
+        ((TextView) findViewById(R.id.result_textView)).setText(savedInstanceState.getCharSequence(RESULT_STATE));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
     @Override
@@ -77,18 +82,7 @@ public class CalculatorActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 calculatorOption = which;
-                                String tempText = ((TextView)findViewById(R.id.textView)).getText().toString();
-
-                                switch (calculatorOption){
-                                    case 0:
-                                        setContentView(R.layout.activity_calculator);
-                                        break;
-                                    case 1:
-                                        setContentView(R.layout.activity_scientific_calculator);
-                                        break;
-                                }
-                                setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
-                                ((TextView)findViewById(R.id.textView)).setText(tempText);
+                                createNewLayout();
                                 dialog.dismiss();
                             }
                         });
@@ -117,6 +111,22 @@ public class CalculatorActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    private void createNewLayout() {
+        String tempText = ((TextView)findViewById(R.id.textView)).getText().toString();
+        String tempResult = ((TextView)findViewById(R.id.result_textView)).getText().toString();
+        switch (calculatorOption){
+            case 0:
+                setContentView(R.layout.activity_calculator);
+                break;
+            case 1:
+                setContentView(R.layout.activity_scientific_calculator);
+                break;
+        }
+        setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
+        ((TextView)findViewById(R.id.textView)).setText(tempText);
+        ((TextView)findViewById(R.id.result_textView)).setText(tempResult);
     }
 
 
